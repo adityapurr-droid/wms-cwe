@@ -1,0 +1,31 @@
+Teknologi yang digunakan dalam membangun aplikasi WMS CWE v2.0.0:
+
+1. Core Backend (Sisi Server)
+- PHP (Native): Menggunakan PHP sebagai bahasa pemrograman utama dengan arsitektur prosedural yang terorganisir dalam modul-modul (modules/).
+- PDO (PHP Data Objects): Digunakan untuk abstraksi database yang aman, mencegah SQL Injection melalui prepared statements.
+- Session-based Authentication: Sistem login menggunakan session PHP untuk mengelola akses pengguna dan peran (admin vs operator).
+- CSRF Protection: Implementasi token keamanan pada form (seperti di halaman login) untuk mencegah serangan Cross-Site Request Forgery.
+
+2. Database
+- MySQL / MariaDB: Digunakan sebagai sistem manajemen database relasional (terlihat dari penggunaan driver PDO MySQL).
+- Relational Schema: Database menggunakan relasi antar tabel (seperti barang yang berelasi dengan kategori, rak, satuan, dan departemen).
+
+3. Frontend & UI/UX (Antarmuka)
+- Bootstrap 5.3.3: Framework CSS utama untuk tata letak (layouting) responsif dan komponen UI modern.
+- jQuery 3.7.1: Library JavaScript untuk manipulasi DOM, penanganan event, dan mendukung plugin seperti DataTables.
+- Custom PJAX (Navigation System): Navigasi antar halaman tanpa reload penuh (menggunakan Fetch API & History API) untuk pengalaman pengguna yang lebih cepat seperti aplikasi Single Page Application (SPA).
+- CSS3 Custom Properties (Variables): Penggunaan variabel CSS (:root) untuk tema warna "Palm Emerald" yang konsisten.
+- Typography: Menggunakan font Plus Jakarta Sans dari Google Fonts.
+
+4. Library Pihak Ketiga (Integrasi JavaScript/CSS)
+- DataTables: Digunakan untuk mengubah tabel HTML biasa menjadi tabel interaktif (pencarian, sorting, dan pagination otomatis di sisi klien).
+- SweetAlert2: Untuk dialog konfirmasi dan notifikasi yang lebih cantik (menggantikan alert dan confirm bawaan browser).
+- Chart.js v4.4.2: Digunakan pada dashboard untuk visualisasi tren mutasi barang dan sebaran stok dalam bentuk grafik garis dan donat.
+- HTML5-QRCode: Library untuk akses kamera dan pemindaian barcode/QR secara langsung di browser tanpa aplikasi tambahan.
+- JsBarcode: Digunakan untuk menghasilkan/me-render barcode dari kode barang.
+- FontAwesome 6.5.2 & Bootstrap Icons: Koleksi ikon lengkap untuk elemen navigasi dan tombol.
+
+5. Lingkungan Pengembangan (Environment)
+- Laragon / XAMPP: Berdasarkan jalur file (C:\laragon\www\wms), aplikasi ini dikembangkan di lingkungan Windows menggunakan Laragon sebagai server lokal.
+- Web Server Apache/Nginx: Digunakan untuk menjalankan skrip PHP.
+Aplikasi ini menggabungkan kestabilan PHP tradisional dengan teknik modern (seperti PJAX dan berbagai library interaktif) untuk menghasilkan sistem yang ringan namun terasa sangat responsif.

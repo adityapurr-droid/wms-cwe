@@ -1,0 +1,39 @@
+Sistem ini mengakomodasi pencetakan barcode melalui fitur Cetak Label Barcode yang terintegrasi di modul Master Barang. Berikut adalah cara kerjanya:
+1. Alur Penggunaan (User Flow)
+- Menu Master Barang: Pada tabel daftar barang, terdapat kolom "Aksi" yang berisi tombol ikon printer di setiap baris barang.
+- Halaman Pratinjau: Saat ikon tersebut diklik, sistem membuka halaman khusus (modules/barang/cetak_barcode.php) di tab baru.
+- Cetak Fisik: Halaman tersebut sudah dirancang dengan tata letak minimalis yang siap dicetak langsung ke printer label (menggunakan fitur window.print() pada browser).
+2. Mekanisme Teknis (Behind the Scenes)
+- JsBarcode Library: Sistem tidak menyimpan barcode sebagai file gambar di server untuk menghemat penyimpanan. Sebagai gantinya, sistem menggunakan library JsBarcode untuk mengubah kode string (misal: 899123456) menjadi gambar barcode secara real-time di sisi browser.
+- Identitas Barang: Selain gambar barcode, label yang dicetak juga menyertakan informasi penting seperti:
+- Nama Barang.
+- Kode Barang (teks).
+- Nama Rak (untuk memudahkan penempatan kembali).
+- CSS Print Media: Sistem menggunakan instruksi CSS khusus agar elemen yang tidak perlu (seperti tombol navigasi) tidak ikut tercetak, sehingga hanya label barcode yang keluar dari printer.
+3. Keamanan Kode
+Sistem memiliki fungsi regenerateBarcode() di halaman tambah barang untuk memastikan setiap barang baru mendapatkan kode unik yang valid (umumnya menggunakan format angka seperti EAN-13 atau format acak yang didukung) sebelum dicetak.
+Jika Anda ingin melihat atau menguji fitur ini, Anda bisa masuk ke menu Master Barang dan menekan ikon printer berwarna abu-abu pada salah satu data barang.
+
+A. Rekomendasi Barcode Scanner (Pemindai)
+Sistem Anda mendukung 2 metode scan: USB Mode (Keyboard Emulator/HID) dan Camera Mode. Untuk penggunaan sehari-hari yang cepat, jenis USB / Wireless 2.4G (HID) adalah yang terbaik karena bertindak seperti ketikan keyboard otomatis.
+1. Honeywell Voyager 1250g / 1470g (Rekomendasi Utama - Kelas Industri/Gudang)
+- Keunggulan: Sangat tahan banting (terjatuh dari ketinggian 1.5m tetap aman), respons pemindaian cepat bahkan pada barcode yang sedikit buram atau rusak.
+- Koneksi: USB / Stand Cradle.
+2. Zebra DS2208 (1D & 2D / QR Code) (Rekomendasi Serbaguna)
+- Keunggulan: Bisa membaca barcode garis (1D) maupun QR Code (2D) dari layar HP/laptop dan media kertas dengan sangat cepat.
+- Koneksi: Plug and Play USB.
+3. Eyoyo EY-015 / EY-028 (Wireless / Bluetooth) (Rekomendasi Ekonomis & Fleksibel)
+- Keunggulan: Menggunakan dongle wireless 2.4GHz / Bluetooth. Sangat cocok jika petugas gudang perlu bergerak bebas memindai barang di rak tanpa terhalang kabel.
+B. Rekomendasi Barcode Thermal Printer (Pencetak Label)
+Karena label barang gudang biasanya berukuran kecil (seperti 50x30 mm atau 40x20 mm), Printer Direct Thermal / Thermal Transfer adalah pilihan tepat karena tidak memerlukan tinta (menggunakan kertas stiker thermal).
+1. Xprinter XP-420B / XP-365B (Rekomendasi Best Value / Budget)
+- Keunggulan: Sangat populer, murah, perawatan mudah, dan didukung ukuran stiker label yang bervariasi. Sangat presisi untuk cetak label WMS via browser.
+- Koneksi: USB.
+2. Zebra ZD220 / ZD230 (Rekomendasi Standar Industri)
+- Keunggulan: Sangat awet untuk cetak berjam-jam/volume tinggi, daya tahan cetakan luar biasa (menggunakan Thermal Transfer dengan Ribbon/Direct Thermal).
+3. Postek C168 / E200 (Rekomendasi Gudang Menengah)
+- Keunggulan: Hasil cetak tajam, mesin bandel, serta pengaturan sensor kertas yang akurat sehingga stiker label tidak meleset saat keluar.
+Ringkasan Kombinasi Ideal:
+- Pilihan Hemat & Efektif: Printer Xprinter XP-420B + Scanner Eyoyo Wireless / Zebra DS2208.
+- Pilihan Industri / Volume Tinggi: Printer Zebra ZD220 + Scanner Honeywell Voyager 1470g.
+Catatan: Pastikan stiker yang dibeli menggunakan jenis stiker stiker thermal (misal ukuran 50x30 mm atau 100x50 mm sesuaikan kebutuhan stiker di barang).
