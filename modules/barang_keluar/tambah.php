@@ -102,14 +102,14 @@ require_once __DIR__ . '/../../layout/sidebar.php';
             <a href="<?= BASE_URL ?>modules/barang_keluar/index.php" class="text-decoration-none text-muted small fw-semibold">
                 &larr; Kembali ke Daftar Barang Keluar
             </a>
-            <h4 class="fw-bold mt-2 text-dark"><i class="bi bi-box-arrow-up-right text-danger me-2"></i> Formulir Pengeluaran Barang (Gudang)</h4>
+            <h4 class="fw-bold mt-2 text-dark"><i class="bi bi-box-arrow-up-right text-output-data me-2"></i> Formulir Pengeluaran Barang (Gudang)</h4>
             <p class="text-muted small mb-0">Catat penyerahan sarana perkebunan, alat praktikum, bahan lab, atau ATK kepada pemohon.</p>
         </div>
 
         <div class="card shadow-sm" style="max-width: 900px;">
             <div class="card-header bg-white py-3 d-flex justify-content-between align-items-center">
                 <h6 class="fw-bold mb-0 text-dark">Data Pengeluaran & Serah Terima</h6>
-                <a href="<?= BASE_URL ?>modules/scanner/index.php" class="btn btn-sm btn-outline-success rounded-pill">
+                <a href="<?= BASE_URL ?>modules/scanner/index.php" class="btn btn-sm btn-outline-persediaan">
                     <i class="bi bi-upc-scan me-1"></i> Scan Barcode Cepat
                 </a>
             </div>
@@ -145,14 +145,14 @@ require_once __DIR__ . '/../../layout/sidebar.php';
 
                         <!-- Panel Detail Rak & Stok Tersedia (Live Info) -->
                         <div class="col-12" id="infoBarangKeluarPanel" style="display: none;">
-                            <div class="p-3 bg-light rounded-3 border d-flex justify-content-between align-items-center">
+                            <div class="p-3 bg-light border d-flex justify-content-between align-items-center">
                                 <div>
                                     <small class="text-muted d-block">Ambil dari Rak:</small>
-                                    <span class="fw-bold text-primary font-monospace" id="infoRakKeluarText">-</span>
+                                    <span class="fw-bold text-persediaan font-monospace" id="infoRakKeluarText">-</span>
                                 </div>
                                 <div class="text-end">
                                     <small class="text-muted d-block">Maksimal Stok yang Boleh Diambil:</small>
-                                    <span class="badge bg-success fs-6" id="infoStokKeluarText">-</span>
+                                    <span class="badge bg-persediaan fs-6" id="infoStokKeluarText">-</span>
                                 </div>
                             </div>
                         </div>
@@ -174,14 +174,14 @@ require_once __DIR__ . '/../../layout/sidebar.php';
                             <input type="text" name="peruntukan" class="form-control" placeholder="Contoh: Praktikum Panen BKS Angkatan 2024" value="<?= htmlspecialchars($_POST['peruntukan'] ?? '') ?>" required>
                         </div>
 
-                        <!-- Kuantitas Jumlah Keluar -->
+                        <!-- Kuantitas Jumlah Keluar (Output Data: #C7260A) -->
                         <div class="col-md-6">
                             <label class="form-label fw-semibold small">Jumlah Barang yang Dikeluarkan <span class="text-danger">*</span></label>
                             <div class="input-group">
-                                <input type="number" name="jumlah" id="inputJumlahKeluar" class="form-control fw-bold fs-5 text-danger" min="1" placeholder="0" value="<?= htmlspecialchars($_POST['jumlah'] ?? '') ?>" required>
+                                <input type="number" name="jumlah" id="inputJumlahKeluar" class="form-control fw-bold fs-5 text-output-data" min="1" placeholder="0" value="<?= htmlspecialchars($_POST['jumlah'] ?? '') ?>" required>
                                 <span class="input-group-text bg-light" id="satuanKeluarLabel">Unit</span>
                             </div>
-                            <small class="text-danger small mt-1" id="stokWarning" style="display: none;">
+                            <small class="text-output-data small mt-1" id="stokWarning" style="display: none;">
                                 <i class="bi bi-exclamation-triangle-fill"></i> Jumlah melebihi stok yang tersedia di rak!
                             </small>
                         </div>
@@ -194,7 +194,7 @@ require_once __DIR__ . '/../../layout/sidebar.php';
 
                         <div class="col-12 mt-4 pt-3 border-top d-flex justify-content-end gap-2">
                             <a href="<?= BASE_URL ?>modules/barang_keluar/index.php" class="btn btn-light border px-4">Batal</a>
-                            <button type="submit" id="btnSubmitKeluar" class="btn btn-danger px-4 fw-bold">
+                            <button type="submit" id="btnSubmitKeluar" class="btn btn-output-data px-4 fw-bold">
                                 <i class="bi bi-check-circle me-1"></i> Simpan Pengeluaran Barang
                             </button>
                         </div>

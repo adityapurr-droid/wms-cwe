@@ -89,14 +89,14 @@ require_once __DIR__ . '/../../layout/sidebar.php';
             <a href="<?= BASE_URL ?>modules/barang_masuk/index.php" class="text-decoration-none text-muted small fw-semibold">
                 &larr; Kembali ke Daftar Barang Masuk
             </a>
-            <h4 class="fw-bold mt-2 text-dark"><i class="bi bi-box-arrow-in-down text-info me-2"></i> Formulir Penerimaan Barang Masuk (Pintu Gudang)</h4>
+            <h4 class="fw-bold mt-2 text-dark"><i class="bi bi-box-arrow-in-down text-input-data me-2"></i> Formulir Penerimaan Barang Masuk (Pintu Gudang)</h4>
             <p class="text-muted small mb-0">Catat barang yang baru tiba dari vendor/supplier untuk langsung dialokasikan ke rak penyimpanan.</p>
         </div>
 
         <div class="card shadow-sm" style="max-width: 900px;">
             <div class="card-header bg-white py-3 d-flex justify-content-between align-items-center">
                 <h6 class="fw-bold mb-0 text-dark">Data Tanda Terima Barang</h6>
-                <a href="<?= BASE_URL ?>modules/scanner/index.php" class="btn btn-sm btn-outline-success rounded-pill">
+                <a href="<?= BASE_URL ?>modules/scanner/index.php" class="btn btn-sm btn-outline-persediaan">
                     <i class="bi bi-upc-scan me-1"></i> Scan Barcode Cepat
                 </a>
             </div>
@@ -132,14 +132,14 @@ require_once __DIR__ . '/../../layout/sidebar.php';
 
                         <!-- Panel Detail Rak & Stok Saat Ini (Live Info) -->
                         <div class="col-12" id="infoBarangPanel" style="display: none;">
-                            <div class="p-3 bg-light rounded-3 border d-flex justify-content-between align-items-center">
+                            <div class="p-3 bg-light border d-flex justify-content-between align-items-center">
                                 <div>
                                     <small class="text-muted d-block">Lokasi Alokasi Rak Gudang:</small>
-                                    <span class="fw-bold text-primary font-monospace" id="infoRakText">-</span>
+                                    <span class="fw-bold text-persediaan font-monospace" id="infoRakText">-</span>
                                 </div>
                                 <div class="text-end">
                                     <small class="text-muted d-block">Stok Fisik Saat Ini:</small>
-                                    <span class="badge bg-success fs-6" id="infoStokText">-</span>
+                                    <span class="badge bg-persediaan fs-6" id="infoStokText">-</span>
                                 </div>
                             </div>
                         </div>
@@ -161,11 +161,11 @@ require_once __DIR__ . '/../../layout/sidebar.php';
                             <input type="text" name="no_surat_jalan" class="form-control" placeholder="Contoh: SJ-2026/091/SAP" value="<?= htmlspecialchars($_POST['no_surat_jalan'] ?? '') ?>">
                         </div>
 
-                        <!-- Kuantitas Jumlah Masuk -->
+                        <!-- Kuantitas Jumlah Masuk (Input Data: #17AB03) -->
                         <div class="col-md-6">
                             <label class="form-label fw-semibold small">Jumlah Barang yang Diterima <span class="text-danger">*</span></label>
                             <div class="input-group">
-                                <input type="number" name="jumlah" class="form-control fw-bold fs-5 text-success" min="1" placeholder="0" value="<?= htmlspecialchars($_POST['jumlah'] ?? '') ?>" required>
+                                <input type="number" name="jumlah" class="form-control fw-bold fs-5 text-input-data" min="1" placeholder="0" value="<?= htmlspecialchars($_POST['jumlah'] ?? '') ?>" required>
                                 <span class="input-group-text bg-light" id="satuanLabel">Unit</span>
                             </div>
                         </div>
@@ -178,7 +178,7 @@ require_once __DIR__ . '/../../layout/sidebar.php';
 
                         <div class="col-12 mt-4 pt-3 border-top d-flex justify-content-end gap-2">
                             <a href="<?= BASE_URL ?>modules/barang_masuk/index.php" class="btn btn-light border px-4">Batal</a>
-                            <button type="submit" class="btn btn-cwe-primary px-4 fw-bold">
+                            <button type="submit" class="btn btn-input-data px-4 fw-bold">
                                 <i class="bi bi-check-circle me-1"></i> Simpan Penerimaan Barang
                             </button>
                         </div>

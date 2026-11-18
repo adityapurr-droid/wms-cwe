@@ -94,11 +94,11 @@ require_once __DIR__ . '/../../layout/sidebar.php';
 
         <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-4">
             <div>
-                <h4 class="fw-bold mb-1 text-dark"><i class="bi bi-columns-gap text-success me-2"></i> Manajemen Rak Gudang</h4>
+                <h4 class="fw-bold mb-1 text-dark"><i class="bi bi-columns-gap text-persediaan me-2"></i> Manajemen Rak Gudang</h4>
                 <p class="text-muted small mb-0">Atur zona dan rak penyimpanan barang pada gudang terpusat 1 pintu Politeknik Kelapa Sawit CWE.</p>
             </div>
             <div class="mt-3 mt-md-0">
-                <button type="button" class="btn btn-cwe-primary rounded-pill shadow-sm" data-bs-toggle="modal" data-bs-target="#modalTambahRak">
+                <button type="button" class="btn btn-theme-main shadow-sm" data-bs-toggle="modal" data-bs-target="#modalTambahRak">
                     <i class="bi bi-plus-circle me-1"></i> Tambah Rak Baru
                 </button>
             </div>
@@ -128,7 +128,7 @@ require_once __DIR__ . '/../../layout/sidebar.php';
                                 <tr>
                                     <td><?= $no++ ?></td>
                                     <td>
-                                        <span class="badge bg-success-subtle text-success border border-success-subtle font-monospace px-2 py-1 fs-6">
+                                        <span class="badge bg-persediaan-subtle text-persediaan border font-monospace px-2 py-1 fs-6">
                                             <?= htmlspecialchars($r['kode_rak']) ?>
                                         </span>
                                     </td>
@@ -136,26 +136,26 @@ require_once __DIR__ . '/../../layout/sidebar.php';
                                     <td><span class="badge bg-light text-dark border"><?= htmlspecialchars($r['kapasitas'] ?? '-') ?></span></td>
                                     <td class="small text-muted"><?= htmlspecialchars($r['keterangan'] ?? '-') ?></td>
                                     <td class="text-center">
-                                        <span class="badge bg-primary-subtle text-primary"><?= $r['total_sku'] ?> SKU</span>
+                                        <span class="badge bg-persediaan-subtle text-persediaan"><?= $r['total_sku'] ?> SKU</span>
                                     </td>
                                     <td class="text-center">
-                                        <span class="badge bg-success-subtle text-success fw-bold"><?= number_format($r['total_stok']) ?> Unit</span>
+                                        <span class="badge bg-persediaan-subtle text-persediaan fw-bold"><?= number_format($r['total_stok']) ?> Unit</span>
                                     </td>
                                     <td class="text-end">
-                                        <button type="button" class="btn btn-sm btn-outline-warning rounded-circle me-1 btn-edit-rak"
+                                        <button type="button" class="btn btn-sm btn-outline-secondary d-inline-flex align-items-center justify-content-center me-1 btn-edit-rak" style="width: 28px; height: 28px; padding: 0;"
                                                 data-id="<?= $r['id'] ?>"
                                                 data-kode="<?= htmlspecialchars($r['kode_rak']) ?>"
                                                 data-nama="<?= htmlspecialchars($r['nama_rak']) ?>"
                                                 data-kapasitas="<?= htmlspecialchars($r['kapasitas'] ?? '') ?>"
                                                 data-keterangan="<?= htmlspecialchars($r['keterangan'] ?? '') ?>"
                                                 title="Ubah Rak">
-                                            <i class="bi bi-pencil"></i>
+                                            <i class="bi bi-pencil" style="font-size: 0.8rem;"></i>
                                         </button>
                                         <a href="<?= BASE_URL ?>modules/rak/index.php?action=delete&id=<?= $r['id'] ?>" 
-                                           class="btn btn-sm btn-outline-danger rounded-circle btn-delete-confirm" 
+                                           class="btn btn-sm btn-outline-output-data btn-delete-confirm d-inline-flex align-items-center justify-content-center" style="width: 28px; height: 28px; padding: 0;"
                                            data-name="Rak <?= htmlspecialchars($r['kode_rak']) ?>" 
                                            title="Hapus Rak">
-                                            <i class="bi bi-trash"></i>
+                                            <i class="bi bi-trash" style="font-size: 0.8rem;"></i>
                                         </a>
                                     </td>
                                 </tr>

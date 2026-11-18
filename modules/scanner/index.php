@@ -30,11 +30,11 @@ require_once __DIR__ . '/../../layout/sidebar.php';
 
         <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-4">
             <div>
-                <h4 class="fw-bold mb-1 text-dark"><i class="bi bi-upc-scan text-success me-2"></i> Scanner Barcode & QR Code</h4>
+                <h4 class="fw-bold mb-1 text-dark"><i class="bi bi-upc-scan text-persediaan me-2"></i> Scanner Barcode & QR Code</h4>
                 <p class="text-muted small mb-0">Pindai kode fisik barang untuk identifikasi instan, pemeriksaan stok, dan pencatatan transaksi 1 pintu.</p>
             </div>
             <div class="mt-3 mt-md-0">
-                <span class="badge bg-success-subtle text-success border border-success-subtle px-3 py-2 rounded-pill">
+                <span class="badge bg-persediaan-subtle text-persediaan border px-3 py-2">
                     <i class="bi bi-broadcast me-1"></i> Mode Scanner Terhubung
                 </span>
             </div>
@@ -85,7 +85,7 @@ require_once __DIR__ . '/../../layout/sidebar.php';
                                     <div class="input-group input-group-lg shadow-sm" style="max-width: 450px; margin: 0 auto;">
                                         <span class="input-group-text bg-white text-muted border-end-0"><i class="bi bi-barcode"></i></span>
                                         <input type="text" id="manualBarcodeInput" class="form-control border-start-0" placeholder="Tembak barcode atau ketik di sini..." autofocus>
-                                        <button class="btn btn-success fw-bold px-4" type="button" id="btnCheckManual">
+                                        <button class="btn btn-persediaan fw-bold px-4" type="button" id="btnCheckManual">
                                             Cari
                                         </button>
                                     </div>
@@ -100,14 +100,14 @@ require_once __DIR__ . '/../../layout/sidebar.php';
             <!-- Kolom Kanan: Hasil Pemindaian & Sampel Uji Coba -->
             <div class="col-lg-5">
                 <!-- Card Detail Barang Hasil Scan -->
-                <div class="card shadow-sm mb-4 border-success" id="resultCard" style="display: none;">
-                    <div class="card-header bg-success text-white d-flex justify-content-between align-items-center">
+                <div class="card shadow-sm mb-4 border" id="resultCard" style="display: none; border-color: var(--theme-main) !important;">
+                    <div class="card-header text-white d-flex justify-content-between align-items-center" style="background-color: var(--theme-main);">
                         <span class="fw-bold"><i class="bi bi-check-circle-fill me-1"></i> Barang Ditemukan!</span>
-                        <span class="badge bg-white text-success font-monospace" id="resBarcodeBadge">-</span>
+                        <span class="badge bg-white text-dark font-monospace" id="resBarcodeBadge">-</span>
                     </div>
                     <div class="card-body p-4">
                         <div class="d-flex align-items-center mb-3">
-                            <div class="rounded-3 bg-success-subtle text-success p-3 me-3 text-center" style="min-width: 60px;">
+                            <div class="bg-persediaan-subtle text-persediaan p-3 me-3 text-center" style="min-width: 60px; border-radius: var(--radius-sm);">
                                 <i class="bi bi-box-seam fs-2"></i>
                             </div>
                             <div>
@@ -119,15 +119,15 @@ require_once __DIR__ . '/../../layout/sidebar.php';
                             </div>
                         </div>
 
-                        <div class="p-3 bg-light rounded-3 mb-3 border">
+                        <div class="p-3 bg-light mb-3 border">
                             <div class="row g-2">
                                 <div class="col-6">
                                     <small class="text-muted d-block">Lokasi Rak:</small>
-                                    <span class="fw-bold text-dark" id="resRak"><i class="bi bi-grid-3x3 me-1 text-primary"></i> -</span>
+                                    <span class="fw-bold text-persediaan" id="resRak"><i class="bi bi-grid-3x3 me-1 text-persediaan"></i> -</span>
                                 </div>
                                 <div class="col-6">
                                     <small class="text-muted d-block">Sisa Stok Fisik:</small>
-                                    <span class="fw-bold fs-5" id="resStokText">-</span>
+                                    <span class="fw-bold fs-5 text-persediaan" id="resStokText">-</span>
                                 </div>
                                 <div class="col-12 mt-2 pt-2 border-top">
                                     <small class="text-muted d-block">Spesifikasi:</small>
@@ -140,24 +140,24 @@ require_once __DIR__ . '/../../layout/sidebar.php';
                         <div class="d-grid gap-2">
                             <div class="row g-2">
                                 <div class="col-6">
-                                    <a href="#" id="btnActionMasuk" class="btn btn-primary w-100 py-2 fw-semibold">
+                                    <a href="#" id="btnActionMasuk" class="btn btn-input-data w-100 py-2 fw-semibold">
                                         <i class="bi bi-plus-circle me-1"></i> Terima Masuk
                                     </a>
                                 </div>
                                 <div class="col-6">
-                                    <a href="#" id="btnActionKeluar" class="btn btn-outline-danger w-100 py-2 fw-semibold">
+                                    <a href="#" id="btnActionKeluar" class="btn btn-output-data w-100 py-2 fw-semibold">
                                         <i class="bi bi-dash-circle me-1"></i> Catat Keluar
                                     </a>
                                 </div>
                             </div>
                             <div class="row g-2">
                                 <div class="col-6">
-                                    <a href="#" id="btnActionKartu" class="btn btn-light border w-100 py-2 small fw-semibold text-secondary">
+                                    <a href="#" id="btnActionKartu" class="btn btn-outline-persediaan w-100 py-2 small fw-semibold">
                                         <i class="bi bi-journal-text me-1"></i> Kartu Stok
                                     </a>
                                 </div>
                                 <div class="col-6">
-                                    <a href="#" id="btnActionCetak" target="_blank" class="btn btn-light border w-100 py-2 small fw-semibold text-secondary">
+                                    <a href="#" id="btnActionCetak" target="_blank" class="btn btn-outline-output-data w-100 py-2 small fw-semibold">
                                         <i class="bi bi-printer me-1"></i> Cetak Label
                                     </a>
                                 </div>

@@ -125,17 +125,17 @@ require_once __DIR__ . '/../../layout/sidebar.php';
                 <a href="<?= BASE_URL ?>modules/barang/index.php" class="text-decoration-none text-muted small fw-semibold no-print">
                     &larr; Kembali ke Master Barang
                 </a>
-                <h4 class="fw-bold mt-2 text-dark"><i class="bi bi-journal-text text-success me-2"></i> Kartu Stok & Buku Mutasi Inventori</h4>
+                <h4 class="fw-bold mt-2 text-dark"><i class="bi bi-journal-text text-persediaan me-2"></i> Kartu Stok & Buku Mutasi Inventori</h4>
                 <p class="text-muted small mb-0">Riwayat kronologis penambahan dan pengeluaran fisik barang di gudang CWE.</p>
             </div>
             <div class="mt-3 mt-md-0 d-flex gap-2 no-print">
-                <a href="<?= BASE_URL ?>modules/barang/cetak_kartu_stok.php?id=<?= $barang['id'] ?>" target="_blank" class="btn btn-outline-dark rounded-pill px-3">
+                <a href="<?= BASE_URL ?>modules/barang/cetak_kartu_stok.php?id=<?= $barang['id'] ?>" target="_blank" class="btn btn-outline-output-data px-3">
                     <i class="bi bi-printer me-1"></i> Cetak Kartu Stok
                 </a>
-                <a href="<?= BASE_URL ?>modules/barang_masuk/tambah.php?id_barang=<?= $barang['id'] ?>" class="btn btn-success rounded-pill px-3">
+                <a href="<?= BASE_URL ?>modules/barang_masuk/tambah.php?id_barang=<?= $barang['id'] ?>" class="btn btn-input-data px-3">
                     <i class="bi bi-plus-circle me-1"></i> Terima Masuk
                 </a>
-                <a href="<?= BASE_URL ?>modules/barang_keluar/tambah.php?id_barang=<?= $barang['id'] ?>" class="btn btn-outline-danger rounded-pill px-3">
+                <a href="<?= BASE_URL ?>modules/barang_keluar/tambah.php?id_barang=<?= $barang['id'] ?>" class="btn btn-outline-output-data px-3">
                     <i class="bi bi-dash-circle me-1"></i> Catat Keluar
                 </a>
             </div>
@@ -146,7 +146,7 @@ require_once __DIR__ . '/../../layout/sidebar.php';
             <div class="card-body p-4">
                 <div class="row g-3 align-items-center">
                     <div class="col-md-7">
-                        <span class="badge bg-success-subtle text-success font-monospace px-2 py-1 mb-1"><?= htmlspecialchars($barang['kode_barang']) ?></span>
+                        <span class="badge bg-persediaan-subtle text-persediaan font-monospace px-2 py-1 mb-1"><?= htmlspecialchars($barang['kode_barang']) ?></span>
                         <h4 class="fw-bold text-dark mb-1"><?= htmlspecialchars($barang['nama_barang']) ?></h4>
                         <div class="text-muted small mb-2">
                             <span><i class="bi bi-upc me-1"></i> Barcode: <strong><?= htmlspecialchars($barang['barcode']) ?></strong></span>
@@ -157,17 +157,17 @@ require_once __DIR__ . '/../../layout/sidebar.php';
                     </div>
 
                     <div class="col-md-5">
-                        <div class="p-3 bg-light rounded-3 border d-flex justify-content-around text-center">
+                        <div class="p-3 bg-light border d-flex justify-content-around text-center" style="border-radius: var(--radius-sm);">
                             <div>
                                 <small class="text-muted d-block">Lokasi Rak:</small>
-                                <span class="badge bg-primary fs-6 font-monospace mt-1">
-                                    <i class="bi bi-grid-3x3-gap me-1"></i> <?= htmlspecialchars($barang['kode_rak']) ?>
+                                <span class="badge bg-persediaan-subtle text-persediaan fs-6 font-monospace mt-1 border">
+                                    <i class="bi bi-grid-3x3-gap me-1 text-persediaan"></i> <?= htmlspecialchars($barang['kode_rak']) ?>
                                 </span>
                                 <div class="text-muted" style="font-size: 0.7rem;"><?= htmlspecialchars($barang['nama_rak']) ?></div>
                             </div>
                             <div class="border-start ps-3">
                                 <small class="text-muted d-block">Saldo Fisik Saat Ini:</small>
-                                <span class="fs-4 fw-bold text-success mt-1 d-block"><?= number_format($barang['stok']) ?></span>
+                                <span class="fs-4 fw-bold text-persediaan mt-1 d-block"><?= number_format($barang['stok']) ?></span>
                                 <span class="badge bg-light text-dark border"><?= htmlspecialchars($barang['nama_satuan']) ?></span>
                             </div>
                             <div class="border-start ps-3">
@@ -196,9 +196,9 @@ require_once __DIR__ . '/../../layout/sidebar.php';
                                 <th>No. Transaksi</th>
                                 <th>Pihak / Rekanan / Unit</th>
                                 <th>Keterangan</th>
-                                <th style="width: 90px;" class="text-success">Masuk (+)</th>
-                                <th style="width: 90px;" class="text-danger">Keluar (-)</th>
-                                <th style="width: 100px;" class="text-primary">Saldo Akhir</th>
+                                <th style="width: 90px;" class="text-input-data">Masuk (+)</th>
+                                <th style="width: 90px;" class="text-output-data">Keluar (-)</th>
+                                <th style="width: 100px;" class="text-persediaan">Saldo Akhir</th>
                                 <th>Petugas</th>
                             </tr>
                         </thead>
@@ -213,19 +213,19 @@ require_once __DIR__ . '/../../layout/sidebar.php';
                                         <td class="text-center"><?= $no++ ?></td>
                                         <td class="small"><?= format_tanggal($m['tanggal']) ?></td>
                                         <td class="font-monospace small fw-bold">
-                                            <span class="badge <?= ($m['tipe'] === 'MASUK') ? 'bg-info-subtle text-info' : 'bg-danger-subtle text-danger' ?>">
+                                            <span class="badge <?= ($m['tipe'] === 'MASUK') ? 'bg-input-data-subtle text-input-data' : 'bg-output-data-subtle text-output-data' ?>">
                                                 <?= htmlspecialchars($m['no_transaksi']) ?>
                                             </span>
                                         </td>
                                         <td class="small"><?= htmlspecialchars($m['pihak_terkait']) ?></td>
                                         <td class="small text-muted"><?= htmlspecialchars($m['keterangan'] ?? '-') ?></td>
-                                        <td class="text-center text-success fw-bold">
+                                        <td class="text-center text-input-data fw-bold">
                                             <?= ($m['masuk'] > 0) ? '+' . number_format($m['masuk']) : '-' ?>
                                         </td>
-                                        <td class="text-center text-danger fw-bold">
+                                        <td class="text-center text-output-data fw-bold">
                                             <?= ($m['keluar'] > 0) ? '-' . number_format($m['keluar']) : '-' ?>
                                         </td>
-                                        <td class="text-center fw-bold bg-light text-dark">
+                                        <td class="text-center fw-bold bg-light text-persediaan">
                                             <?= number_format($m['saldo']) ?> <?= htmlspecialchars($barang['nama_satuan']) ?>
                                         </td>
                                         <td class="small text-muted"><?= htmlspecialchars($m['petugas']) ?></td>

@@ -37,7 +37,7 @@ $csrf_token = csrf_token();
     <style>
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
-            background: linear-gradient(135deg, #0b3d26 0%, #157347 50%, #198754 100%);
+            background-color: #153618;
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -45,54 +45,50 @@ $csrf_token = csrf_token();
             padding: 1.5rem;
         }
         .login-card {
-            border: none;
-            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 6px;
             overflow: hidden;
-            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.25);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
             background: #ffffff;
             width: 100%;
             max-width: 440px;
         }
         .form-panel {
-            padding: 2.5rem 2.25rem;
+            padding: 2.25rem 2rem;
         }
         @media (max-width: 575.98px) {
             .form-panel {
-                padding: 2rem 1.5rem;
+                padding: 1.75rem 1.25rem;
             }
         }
         .form-control {
-            border-radius: 10px;
-            padding: 0.75rem 1rem;
-            border: 1.5px solid #dee2e6;
-            font-size: 0.95rem;
+            border-radius: 4px;
+            padding: 0.7rem 0.9rem;
+            border: 1px solid #ced4da;
+            font-size: 0.92rem;
+            color: #1a1d20;
         }
         .form-control:focus {
-            border-color: #198754;
-            box-shadow: 0 0 0 0.25rem rgba(25, 135, 84, 0.18);
+            border-color: #153618;
+            box-shadow: 0 0 0 0.2rem rgba(21, 54, 24, 0.2);
         }
         .btn-cwe-login {
-            background: #0f5132;
+            background-color: #153618;
             color: #ffffff;
-            border: none;
-            border-radius: 10px;
-            padding: 0.8rem 1.5rem;
+            border: 1px solid #153618;
+            border-radius: 4px;
+            padding: 0.75rem 1.5rem;
             font-weight: 700;
-            font-size: 1rem;
-            transition: all 0.3s ease;
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
         }
         .btn-cwe-login:hover {
-            background: #0a3622;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 18px rgba(15, 81, 50, 0.35);
+            background-color: #0e2410;
             color: #ffffff;
         }
         .badge-quick {
             cursor: pointer;
-            transition: all 0.2s;
-        }
-        .badge-quick:hover {
-            transform: scale(1.05);
+            border-radius: 4px !important;
         }
     </style>
 </head>
@@ -141,13 +137,13 @@ $csrf_token = csrf_token();
         </form>
 
         <!-- Akun Cepat untuk Uji Coba -->
-        <div class="p-3 bg-light rounded-3 border">
+        <div class="p-3 bg-light border" style="border-radius: 4px;">
             <span class="fw-bold text-muted small d-block mb-2">Akun Demo (Klik untuk Isi Cepat):</span>
             <div class="d-flex flex-wrap gap-2">
-                <button type="button" class="btn btn-sm btn-outline-success badge-quick rounded-pill" onclick="fillAccount('admin', 'admin123')">
+                <button type="button" class="btn btn-sm btn-outline-success badge-quick" onclick="fillAccount('admin', 'admin123')">
                     <i class="bi bi-person-fill-gear me-1"></i> Admin (admin / admin123)
                 </button>
-                <button type="button" class="btn btn-sm btn-outline-secondary badge-quick rounded-pill" onclick="fillAccount('operator', 'operator123')">
+                <button type="button" class="btn btn-sm btn-outline-secondary badge-quick" onclick="fillAccount('operator', 'operator123')">
                     <i class="bi bi-person-badge me-1"></i> Operator (operator / operator123)
                 </button>
             </div>

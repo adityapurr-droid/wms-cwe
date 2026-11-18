@@ -57,14 +57,14 @@ require_once __DIR__ . '/../../layout/sidebar.php';
 
         <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-4">
             <div>
-                <h4 class="fw-bold mb-1 text-dark"><i class="bi bi-box-arrow-in-down text-info me-2"></i> Penerimaan Barang Masuk (Pintu Gudang)</h4>
-                <p class="text-muted small mb-0">Pencatatan pasokan masuk dari vendor/supplier yang diterima langsung di pos penerimaan gudang CWE.</p>
+                <h4 class="fw-bold mb-1 text-dark"><i class="bi bi-box-arrow-in-down text-input-data me-2"></i> Penerimaan Barang </h4>
+                <p class="text-muted small mb-0">Pencatatan pasokan masuk dari vendor/supplier yang diterima langsung di gudang CWE.</p>
             </div>
             <div class="mt-3 mt-md-0 d-flex gap-2">
-                <a href="<?= BASE_URL ?>modules/scanner/index.php" class="btn btn-outline-success rounded-pill fw-semibold">
+                <a href="<?= BASE_URL ?>modules/scanner/index.php" class="btn btn-outline-persediaan fw-semibold">
                     <i class="bi bi-upc-scan me-1"></i> Scan Barcode
                 </a>
-                <a href="<?= BASE_URL ?>modules/barang_masuk/tambah.php" class="btn btn-cwe-primary rounded-pill shadow-sm">
+                <a href="<?= BASE_URL ?>modules/barang_masuk/tambah.php" class="btn btn-theme-main shadow-sm">
                     <i class="bi bi-plus-circle me-1"></i> Catat Penerimaan Baru
                 </a>
             </div>
@@ -83,11 +83,11 @@ require_once __DIR__ . '/../../layout/sidebar.php';
                         <input type="date" name="tgl_selesai" class="form-control form-control-sm" value="<?= htmlspecialchars($tgl_selesai) ?>">
                     </div>
                     <div class="col-md-3 d-flex align-items-end gap-2 pt-md-3">
-                        <button type="submit" class="btn btn-sm btn-info text-white rounded-pill px-3">Filter</button>
-                        <a href="<?= BASE_URL ?>modules/barang_masuk/index.php" class="btn btn-sm btn-light border rounded-pill px-3">Bulan Ini</a>
+                        <button type="submit" class="btn btn-sm btn-theme-main px-3">Filter</button>
+                        <a href="<?= BASE_URL ?>modules/barang_masuk/index.php" class="btn btn-sm btn-light border px-3">Bulan Ini</a>
                     </div>
                     <div class="col-md-3 text-md-end pt-md-3">
-                        <span class="badge bg-info-subtle text-info fs-6 px-3 py-2 rounded-pill">
+                        <span class="badge bg-input-data-subtle text-input-data fs-6 px-3 py-2">
                             Total Periode: <strong><?= number_format($total_unit_periode) ?> Unit</strong>
                         </span>
                     </div>
@@ -123,7 +123,7 @@ require_once __DIR__ . '/../../layout/sidebar.php';
                                     <td>
                                         <div class="fw-bold text-dark"><?= htmlspecialchars($t['nama_barang']) ?></div>
                                         <small class="badge bg-light text-secondary border font-monospace"><?= htmlspecialchars($t['kode_barang']) ?></small>
-                                        <span class="badge bg-primary-subtle text-primary border border-primary-subtle font-monospace ms-1">
+                                        <span class="badge bg-persediaan-subtle text-persediaan border font-monospace ms-1">
                                             Rak: <?= htmlspecialchars($t['kode_rak']) ?>
                                         </span>
                                     </td>
@@ -135,7 +135,7 @@ require_once __DIR__ . '/../../layout/sidebar.php';
                                         <span class="badge bg-light text-dark border font-monospace"><?= htmlspecialchars($t['no_surat_jalan'] ?? '-') ?></span>
                                     </td>
                                     <td class="text-center">
-                                        <span class="badge bg-success-subtle text-success fs-6 fw-bold px-3 py-1 rounded-pill">
+                                        <span class="badge bg-input-data-subtle text-input-data fs-6 fw-bold px-2 py-1">
                                             +<?= number_format($t['jumlah']) ?> <?= htmlspecialchars($t['nama_satuan']) ?>
                                         </span>
                                     </td>
@@ -143,14 +143,14 @@ require_once __DIR__ . '/../../layout/sidebar.php';
                                         <i class="bi bi-person me-1"></i> <?= htmlspecialchars($t['nama_user']) ?>
                                     </td>
                                     <td class="text-end">
-                                        <!-- Cetak Bukti Masuk / BASTB -->
-                                        <a href="<?= BASE_URL ?>modules/barang_masuk/cetak_nota.php?id=<?= $t['id'] ?>" target="_blank" class="btn btn-sm btn-outline-secondary rounded-circle me-1" title="Cetak Bukti Penerimaan">
-                                            <i class="bi bi-printer"></i>
+                                        <!-- Cetak Bukti Masuk / BASTB (Output Data: #C7260A) -->
+                                        <a href="<?= BASE_URL ?>modules/barang_masuk/cetak_nota.php?id=<?= $t['id'] ?>" target="_blank" class="btn btn-sm btn-outline-output-data d-inline-flex align-items-center justify-content-center me-1" style="width: 28px; height: 28px; padding: 0;" title="Cetak Bukti Penerimaan">
+                                            <i class="bi bi-printer" style="font-size: 0.8rem;"></i>
                                         </a>
                                         <?php if ($user_role === 'admin'): ?>
-                                        <!-- Batalkan Transaksi (Hapus & Rollback Stok) -->
-                                        <a href="<?= BASE_URL ?>modules/barang_masuk/hapus.php?id=<?= $t['id'] ?>" class="btn btn-sm btn-outline-danger rounded-circle btn-delete-confirm" data-name="transaksi <?= htmlspecialchars($t['no_transaksi']) ?> (stok akan dikurangi kembali)" title="Batalkan Transaksi">
-                                            <i class="bi bi-trash"></i>
+                                        <!-- Batalkan Transaksi (Hapus & Rollback Stok - Output/Hapus: #C7260A) -->
+                                        <a href="<?= BASE_URL ?>modules/barang_masuk/hapus.php?id=<?= $t['id'] ?>" class="btn btn-sm btn-outline-output-data btn-delete-confirm d-inline-flex align-items-center justify-content-center" style="width: 28px; height: 28px; padding: 0;" data-name="transaksi <?= htmlspecialchars($t['no_transaksi']) ?> (stok akan dikurangi kembali)" title="Batalkan Transaksi">
+                                            <i class="bi bi-trash" style="font-size: 0.8rem;"></i>
                                         </a>
                                         <?php endif; ?>
                                     </td>

@@ -130,27 +130,27 @@ require_once __DIR__ . '/../../layout/sidebar.php';
     <main class="container-fluid px-4 py-4">
         <?= render_flash() ?>
 
-        <!-- Welcome Banner -->
-        <div class="card bg-success text-white mb-4 border-0 shadow-sm" style="background: linear-gradient(135deg, #0f5132 0%, #157347 60%, #198754 100%);">
+        <!-- Welcome Banner (#153618 & Putih) -->
+        <div class="card text-white mb-4 border-0" style="background-color: var(--theme-main);">
             <div class="card-body p-4">
                 <div class="row align-items-center">
                     <div class="col-md-8">
                         <div class="d-flex align-items-center mb-2">
-                            <span class="badge bg-white text-success px-3 py-1 rounded-pill fw-bold text-uppercase me-2" style="font-size: 0.75rem;">
-                                Logistik Terpusat
+                            <span class="badge bg-white text-dark px-2 py-1 fw-bold text-uppercase me-2" style="font-size: 0.72rem; color: var(--theme-main) !important;">
+                                LOGISTIK TERPUSAT
                             </span>
-                            <span class="text-white-50 small"><i class="bi bi-clock me-1"></i> <?= date('d M Y') ?> - Gudang 1 Pintu Aktif</span>
+                            <span class="text-white small"><i class="bi bi-clock me-1"></i> <?= date('d M Y') ?></span>
                         </div>
-                        <h3 class="fw-bold mb-1">Selamat Datang, <?= htmlspecialchars($_SESSION['user_nama'] ?? 'Petugas') ?>!</h3>
-                        <p class="mb-0 text-white-50 small" style="max-width: 650px;">
-                            Sistem WMS Politeknik Kelapa Sawit Citra Widya Edukasi siap membantu pemantauan stok rak sarana praktikum, bahan lab, dan suku cadang secara real-time.
+                        <h3 class="fw-bold mb-1 text-white">Selamat Datang, <?= htmlspecialchars($_SESSION['user_nama'] ?? 'Petugas') ?>!</h3>
+                        <p class="mb-0 text-white small" style="max-width: 650px;">
+                            Sistem WMS Politeknik Kelapa Sawit Citra Widya Edukasi untuk pemantauan persediaan stok rak, penerimaan pasokan, dan distribusi barang.
                         </p>
                     </div>
                     <div class="col-md-4 text-md-end mt-3 mt-md-0 d-flex flex-wrap gap-2 justify-content-md-end">
-                        <a href="<?= BASE_URL ?>modules/scanner/index.php" class="btn btn-warning fw-bold px-4 py-2 rounded-pill shadow-sm scan-pulse">
+                        <a href="<?= BASE_URL ?>modules/scanner/index.php" class="btn btn-outline-gold px-3 py-2">
                             <i class="bi bi-upc-scan me-1"></i> Scan Barcode
                         </a>
-                        <a href="<?= BASE_URL ?>modules/barang_masuk/tambah.php" class="btn btn-outline-light fw-semibold px-3 py-2 rounded-pill">
+                        <a href="<?= BASE_URL ?>modules/barang_masuk/tambah.php" class="btn btn-outline-light px-3 py-2 fw-semibold">
                             <i class="bi bi-plus-lg me-1"></i> Penerimaan
                         </a>
                     </div>
@@ -160,66 +160,66 @@ require_once __DIR__ . '/../../layout/sidebar.php';
 
         <!-- 4 KPI Cards -->
         <div class="row g-3 mb-4">
-            <!-- Total SKU Barang -->
+            <!-- Total SKU Barang (Persediaan: #184AC4) -->
             <div class="col-xl-3 col-sm-6">
                 <div class="card h-100 p-3">
                     <div class="d-flex justify-content-between align-items-center">
                         <div>
                             <span class="text-muted fw-semibold small text-uppercase">Total SKU Barang</span>
-                            <h2 class="fw-bold mb-0 mt-1 text-dark"><?= number_format($total_sku) ?></h2>
-                            <small class="text-muted"><i class="bi bi-layers me-1 text-primary"></i> <?= $total_rak ?> Rak Gudang</small>
+                            <h2 class="fw-bold mb-0 mt-1 text-persediaan"><?= number_format($total_sku) ?></h2>
+                            <small class="text-muted"><i class="bi bi-layers me-1 text-persediaan"></i> <?= $total_rak ?> Rak Gudang</small>
                         </div>
-                        <div class="rounded-4 bg-primary-subtle text-primary p-3 d-flex align-items-center justify-content-center" style="width: 54px; height: 54px;">
+                        <div class="bg-persediaan-subtle text-persediaan p-3 d-flex align-items-center justify-content-center" style="width: 50px; height: 50px; border-radius: var(--radius-sm);">
                             <i class="bi bi-boxes fs-4"></i>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Total Unit Stok Tersimpan -->
+            <!-- Total Unit Stok Tersimpan (Persediaan: #184AC4) -->
             <div class="col-xl-3 col-sm-6">
                 <div class="card h-100 p-3">
                     <div class="d-flex justify-content-between align-items-center">
                         <div>
                             <span class="text-muted fw-semibold small text-uppercase">Total Fisik Stok</span>
-                            <h2 class="fw-bold mb-0 mt-1 text-success"><?= number_format($total_stok_unit) ?></h2>
-                            <small class="text-muted"><i class="bi bi-check2-circle text-success me-1"></i> Unit / Kemasan Siap Pakai</small>
+                            <h2 class="fw-bold mb-0 mt-1 text-persediaan"><?= number_format($total_stok_unit) ?></h2>
+                            <small class="text-muted"><i class="bi bi-check2-circle text-persediaan me-1"></i> Unit / Kemasan Siap Pakai</small>
                         </div>
-                        <div class="rounded-4 bg-success-subtle text-success p-3 d-flex align-items-center justify-content-center" style="width: 54px; height: 54px;">
+                        <div class="bg-persediaan-subtle text-persediaan p-3 d-flex align-items-center justify-content-center" style="width: 50px; height: 50px; border-radius: var(--radius-sm);">
                             <i class="bi bi-box-seam fs-4"></i>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Barang Masuk Bulan Ini -->
+            <!-- Barang Masuk Bulan Ini (Input Data: #17AB03) -->
             <div class="col-xl-3 col-sm-6">
                 <div class="card h-100 p-3">
                     <div class="d-flex justify-content-between align-items-center">
                         <div>
                             <span class="text-muted fw-semibold small text-uppercase">Barang Masuk (Bulan Ini)</span>
-                            <h2 class="fw-bold mb-0 mt-1 text-info"><?= number_format($bm_month['total_unit']) ?> <span class="fs-6 fw-normal text-muted">unit</span></h2>
-                            <small class="text-muted"><i class="bi bi-arrow-down-left text-info me-1"></i> <?= $bm_month['jml_transaksi'] ?> Transaksi (Hari ini: <?= $today_bm_unit ?>)</small>
+                            <h2 class="fw-bold mb-0 mt-1 text-input-data"><?= number_format($bm_month['total_unit']) ?> <span class="fs-6 fw-normal text-muted">unit</span></h2>
+                            <small class="text-muted"><i class="bi bi-arrow-down-left text-input-data me-1"></i> <?= $bm_month['jml_transaksi'] ?> Transaksi (Hari ini: <?= $today_bm_unit ?>)</small>
                         </div>
-                        <div class="rounded-4 bg-info-subtle text-info p-3 d-flex align-items-center justify-content-center" style="width: 54px; height: 54px;">
+                        <div class="bg-input-data-subtle text-input-data p-3 d-flex align-items-center justify-content-center" style="width: 50px; height: 50px; border-radius: var(--radius-sm);">
                             <i class="bi bi-box-arrow-in-down fs-4"></i>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Stok Menipis / Kritis Alert -->
+            <!-- Stok Menipis / Kritis Alert (Output / Kritis: #C7260A) -->
             <div class="col-xl-3 col-sm-6">
-                <div class="card h-100 p-3 border-<?= ($total_kritis > 0) ? 'danger' : 'light' ?>">
+                <div class="card h-100 p-3 <?= ($total_kritis > 0) ? 'border-output-data' : '' ?>">
                     <div class="d-flex justify-content-between align-items-center">
                         <div>
                             <span class="text-muted fw-semibold small text-uppercase">Stok Kritis / Reorder</span>
-                            <h2 class="fw-bold mb-0 mt-1 <?= ($total_kritis > 0) ? 'text-danger' : 'text-secondary' ?>"><?= $total_kritis ?></h2>
-                            <small class="<?= ($total_kritis > 0) ? 'text-danger fw-semibold' : 'text-muted' ?>">
-                                <?= ($total_kritis > 0) ? '<i class="bi bi-exclamation-triangle-fill me-1"></i> Perlu pengadaan ulang!' : '<i class="bi bi-shield-check text-success me-1"></i> Semua stok aman' ?>
+                            <h2 class="fw-bold mb-0 mt-1 <?= ($total_kritis > 0) ? 'text-output-data' : 'text-dark' ?>"><?= $total_kritis ?></h2>
+                            <small class="<?= ($total_kritis > 0) ? 'text-output-data fw-semibold' : 'text-muted' ?>">
+                                <?= ($total_kritis > 0) ? '<i class="bi bi-exclamation-triangle-fill me-1"></i> Perlu pengadaan ulang!' : '<i class="bi bi-shield-check text-input-data me-1"></i> Semua stok aman' ?>
                             </small>
                         </div>
-                        <div class="rounded-4 <?= ($total_kritis > 0) ? 'bg-danger-subtle text-danger' : 'bg-secondary-subtle text-secondary' ?> p-3 d-flex align-items-center justify-content-center" style="width: 54px; height: 54px;">
+                        <div class="<?= ($total_kritis > 0) ? 'bg-output-data-subtle text-output-data' : 'bg-light text-secondary' ?> p-3 d-flex align-items-center justify-content-center" style="width: 50px; height: 50px; border-radius: var(--radius-sm);">
                             <i class="bi bi-bell-fill fs-4"></i>
                         </div>
                     </div>
@@ -268,10 +268,10 @@ require_once __DIR__ . '/../../layout/sidebar.php';
                 <div class="card h-100">
                     <div class="card-header d-flex justify-content-between align-items-center">
                         <div>
-                            <h6 class="fw-bold mb-0 text-danger"><i class="bi bi-exclamation-triangle-fill me-2"></i> Peringatan Stok Kritis / Reorder Point</h6>
+                            <h6 class="fw-bold mb-0 text-output-data"><i class="bi bi-exclamation-triangle-fill me-2 text-output-data"></i> Peringatan Stok Kritis / Reorder Point</h6>
                             <small class="text-muted">Barang yang kuantitasnya di bawah atau sama dengan stok minimum</small>
                         </div>
-                        <a href="<?= BASE_URL ?>modules/barang/index.php" class="btn btn-sm btn-outline-secondary rounded-pill">Lihat Semua</a>
+                        <a href="<?= BASE_URL ?>modules/barang/index.php" class="btn btn-sm btn-outline-persediaan">Lihat Semua</a>
                     </div>
                     <div class="card-body p-0">
                         <div class="table-responsive">
@@ -289,7 +289,7 @@ require_once __DIR__ . '/../../layout/sidebar.php';
                                     <?php if (empty($barang_kritis)): ?>
                                         <tr>
                                             <td colspan="5" class="text-center py-4 text-muted small">
-                                                <i class="bi bi-shield-check text-success fs-3 d-block mb-1"></i>
+                                                <i class="bi bi-shield-check text-input-data fs-3 d-block mb-1"></i>
                                                 Luar biasa! Tidak ada barang dalam kondisi stok menipis saat ini.
                                             </td>
                                         </tr>
@@ -301,12 +301,12 @@ require_once __DIR__ . '/../../layout/sidebar.php';
                                                     <small class="badge bg-light text-secondary border font-monospace"><?= htmlspecialchars($item['kode_barang']) ?></small>
                                                 </td>
                                                 <td>
-                                                    <span class="badge bg-light text-dark border">
-                                                        <i class="bi bi-grid-3x3-gap me-1 text-primary"></i> <?= htmlspecialchars($item['kode_rak']) ?>
+                                                    <span class="badge bg-persediaan-subtle text-persediaan border">
+                                                        <i class="bi bi-grid-3x3-gap me-1 text-persediaan"></i> <?= htmlspecialchars($item['kode_rak']) ?>
                                                     </span>
                                                 </td>
                                                 <td class="text-center">
-                                                    <span class="badge bg-danger rounded-pill px-3 py-1 fw-bold fs-6">
+                                                    <span class="badge bg-output-data px-2 py-1 fw-bold fs-6">
                                                         <?= $item['stok'] ?> <?= htmlspecialchars($item['nama_satuan']) ?>
                                                     </span>
                                                 </td>
@@ -314,7 +314,7 @@ require_once __DIR__ . '/../../layout/sidebar.php';
                                                     <?= $item['stok_minimum'] ?> <?= htmlspecialchars($item['nama_satuan']) ?>
                                                 </td>
                                                 <td class="text-end">
-                                                    <a href="<?= BASE_URL ?>modules/barang_masuk/tambah.php?id_barang=<?= $item['id'] ?>" class="btn btn-sm btn-success rounded-pill px-3" title="Tambah Stok">
+                                                    <a href="<?= BASE_URL ?>modules/barang_masuk/tambah.php?id_barang=<?= $item['id'] ?>" class="btn btn-sm btn-input-data px-3" title="Tambah Stok">
                                                         <i class="bi bi-plus-circle me-1"></i> Restock
                                                     </a>
                                                 </td>
@@ -333,11 +333,11 @@ require_once __DIR__ . '/../../layout/sidebar.php';
                 <div class="card h-100">
                     <div class="card-header d-flex justify-content-between align-items-center">
                         <div>
-                            <h6 class="fw-bold mb-0 text-dark"><i class="bi bi-columns-gap text-primary me-2"></i> Keterisian Rak Penyimpanan Gudang</h6>
+                            <h6 class="fw-bold mb-0 text-dark"><i class="bi bi-columns-gap text-persediaan me-2"></i> Keterisian Rak Penyimpanan Gudang</h6>
                             <small class="text-muted">Jumlah unit fisik tersimpan per rak</small>
                         </div>
                         <?php if (($_SESSION['user_role'] ?? '') === 'admin'): ?>
-                        <a href="<?= BASE_URL ?>modules/rak/index.php" class="btn btn-sm btn-outline-primary rounded-pill">Kelola Rak</a>
+                        <a href="<?= BASE_URL ?>modules/rak/index.php" class="btn btn-sm btn-outline-persediaan">Kelola Rak</a>
                         <?php endif; ?>
                     </div>
                     <div class="card-body">
@@ -349,12 +349,12 @@ require_once __DIR__ . '/../../layout/sidebar.php';
 
         <!-- Section Riwayat Aktivitas Transaksi Terbaru (Masuk & Keluar) -->
         <div class="row g-3">
-            <!-- 5 Transaksi Barang Masuk Terkini -->
+            <!-- 5 Transaksi Barang Masuk Terkini (Input Data: #17AB03) -->
             <div class="col-lg-6">
                 <div class="card h-100">
                     <div class="card-header d-flex justify-content-between align-items-center">
-                        <h6 class="fw-bold mb-0 text-dark"><i class="bi bi-box-arrow-in-down text-info me-2"></i> Penerimaan Masuk Terakhir</h6>
-                        <a href="<?= BASE_URL ?>modules/barang_masuk/index.php" class="small text-decoration-none text-info fw-semibold">Lihat Riwayat &rarr;</a>
+                        <h6 class="fw-bold mb-0 text-input-data"><i class="bi bi-box-arrow-in-down text-input-data me-2"></i> Penerimaan Masuk Terakhir</h6>
+                        <a href="<?= BASE_URL ?>modules/barang_masuk/index.php" class="small text-decoration-none text-input-data fw-semibold">Lihat Riwayat &rarr;</a>
                     </div>
                     <div class="card-body p-0">
                         <div class="list-group list-group-flush">
@@ -366,7 +366,7 @@ require_once __DIR__ . '/../../layout/sidebar.php';
                                         <div>
                                             <div class="fw-bold text-dark"><?= htmlspecialchars($in['nama_barang']) ?></div>
                                             <div class="small text-muted">
-                                                <span class="badge bg-info-subtle text-info font-monospace"><?= htmlspecialchars($in['no_transaksi']) ?></span>
+                                                <span class="badge bg-input-data-subtle text-input-data font-monospace"><?= htmlspecialchars($in['no_transaksi']) ?></span>
                                                 <span class="mx-1">&bull;</span>
                                                 <span><?= htmlspecialchars($in['nama_supplier'] ?? 'Pemasok Umum') ?></span>
                                             </div>
@@ -375,7 +375,7 @@ require_once __DIR__ . '/../../layout/sidebar.php';
                                             </div>
                                         </div>
                                         <div class="text-end">
-                                            <span class="badge bg-success-subtle text-success fs-6 fw-bold px-3 py-2 rounded-pill">
+                                            <span class="badge bg-input-data-subtle text-input-data fs-6 fw-bold px-2 py-1">
                                                 +<?= number_format($in['jumlah']) ?>
                                             </span>
                                         </div>
@@ -387,12 +387,12 @@ require_once __DIR__ . '/../../layout/sidebar.php';
                 </div>
             </div>
 
-            <!-- 5 Transaksi Barang Keluar Terkini -->
+            <!-- 5 Transaksi Barang Keluar Terkini (Output Data: #C7260A) -->
             <div class="col-lg-6">
                 <div class="card h-100">
                     <div class="card-header d-flex justify-content-between align-items-center">
-                        <h6 class="fw-bold mb-0 text-dark"><i class="bi bi-box-arrow-up-right text-danger me-2"></i> Pengeluaran Keluar Terakhir</h6>
-                        <a href="<?= BASE_URL ?>modules/barang_keluar/index.php" class="small text-decoration-none text-danger fw-semibold">Lihat Riwayat &rarr;</a>
+                        <h6 class="fw-bold mb-0 text-output-data"><i class="bi bi-box-arrow-up-right text-output-data me-2"></i> Pengeluaran Keluar Terakhir</h6>
+                        <a href="<?= BASE_URL ?>modules/barang_keluar/index.php" class="small text-decoration-none text-output-data fw-semibold">Lihat Riwayat &rarr;</a>
                     </div>
                     <div class="card-body p-0">
                         <div class="list-group list-group-flush">
@@ -404,7 +404,7 @@ require_once __DIR__ . '/../../layout/sidebar.php';
                                         <div>
                                             <div class="fw-bold text-dark"><?= htmlspecialchars($out['nama_barang']) ?></div>
                                             <div class="small text-muted">
-                                                <span class="badge bg-danger-subtle text-danger font-monospace"><?= htmlspecialchars($out['no_transaksi']) ?></span>
+                                                <span class="badge bg-output-data-subtle text-output-data font-monospace"><?= htmlspecialchars($out['no_transaksi']) ?></span>
                                                 <span class="mx-1">&bull;</span>
                                                 <span><?= htmlspecialchars($out['nama_departemen'] ?? 'Unit Kampus') ?></span>
                                             </div>
@@ -413,7 +413,7 @@ require_once __DIR__ . '/../../layout/sidebar.php';
                                             </div>
                                         </div>
                                         <div class="text-end">
-                                            <span class="badge bg-danger-subtle text-danger fs-6 fw-bold px-3 py-2 rounded-pill">
+                                            <span class="badge bg-output-data-subtle text-output-data fs-6 fw-bold px-2 py-1">
                                                 -<?= number_format($out['jumlah']) ?>
                                             </span>
                                         </div>
@@ -443,23 +443,23 @@ document.addEventListener('DOMContentLoaded', function() {
                     {
                         label: 'Barang Masuk',
                         data: <?= json_encode($chart_bm_data) ?>,
-                        borderColor: '#0d6efd',
-                        backgroundColor: 'rgba(13, 110, 253, 0.1)',
-                        borderWidth: 2.5,
+                        borderColor: '#17AB03',
+                        backgroundColor: 'rgba(23, 171, 3, 0.1)',
+                        borderWidth: 2,
                         fill: true,
-                        tension: 0.35,
-                        pointBackgroundColor: '#0d6efd',
+                        tension: 0.25,
+                        pointBackgroundColor: '#17AB03',
                         pointRadius: 4
                     },
                     {
                         label: 'Barang Keluar',
                         data: <?= json_encode($chart_bk_data) ?>,
-                        borderColor: '#dc3545',
-                        backgroundColor: 'rgba(220, 53, 69, 0.1)',
-                        borderWidth: 2.5,
+                        borderColor: '#C7260A',
+                        backgroundColor: 'rgba(199, 38, 10, 0.1)',
+                        borderWidth: 2,
                         fill: true,
-                        tension: 0.35,
-                        pointBackgroundColor: '#dc3545',
+                        tension: 0.25,
+                        pointBackgroundColor: '#C7260A',
                         pointRadius: 4
                     }
                 ]
@@ -525,10 +525,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 datasets: [{
                     label: 'Total Unit Stok',
                     data: <?= json_encode($rak_stok_data) ?>,
-                    backgroundColor: 'rgba(15, 81, 50, 0.75)',
-                    borderColor: '#0f5132',
-                    borderWidth: 1.5,
-                    borderRadius: 6
+                    backgroundColor: 'rgba(24, 74, 196, 0.85)',
+                    borderColor: '#184AC4',
+                    borderWidth: 1,
+                    borderRadius: 4
                 }]
             },
             options: {

@@ -167,14 +167,14 @@ require_once __DIR__ . '/../../layout/sidebar.php';
 
         <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-4">
             <div>
-                <h4 class="fw-bold mb-1 text-dark"><i class="bi bi-file-earmark-bar-graph text-success me-2"></i> Rekapitulasi Laporan Inventori & Mutasi</h4>
+                <h4 class="fw-bold mb-1 text-dark"><i class="bi bi-file-earmark-bar-graph text-output-data me-2"></i> Rekapitulasi Laporan Inventori & Mutasi</h4>
                 <p class="text-muted small mb-0">Laporan transaksi logistik pergudangan 1 pintu Politeknik Kelapa Sawit Citra Widya Edukasi.</p>
             </div>
             <div class="mt-3 mt-md-0 d-flex gap-2">
-                <a href="<?= BASE_URL ?>modules/laporan/cetak.php?<?= $query_params ?>" target="_blank" class="btn btn-outline-dark rounded-pill px-3">
+                <a href="<?= BASE_URL ?>modules/laporan/cetak.php?<?= $query_params ?>" target="_blank" class="btn btn-outline-output-data px-3">
                     <i class="bi bi-printer me-1"></i> Cetak Dokumen Resmi
                 </a>
-                <a href="<?= BASE_URL ?>modules/laporan/export_excel.php?<?= $query_params ?>" class="btn btn-success rounded-pill px-3 fw-semibold">
+                <a href="<?= BASE_URL ?>modules/laporan/export_excel.php?<?= $query_params ?>" class="btn btn-output-data px-3 fw-semibold">
                     <i class="bi bi-file-earmark-excel me-1"></i> Ekspor ke Excel
                 </a>
             </div>
@@ -183,7 +183,7 @@ require_once __DIR__ . '/../../layout/sidebar.php';
         <!-- Filter Form -->
         <div class="card shadow-sm mb-4">
             <div class="card-header bg-white py-3">
-                <h6 class="fw-bold mb-0 text-dark"><i class="bi bi-funnel text-success me-1"></i> Parameter Kriteria Laporan</h6>
+                <h6 class="fw-bold mb-0 text-dark"><i class="bi bi-funnel text-persediaan me-1"></i> Parameter Kriteria Laporan</h6>
             </div>
             <div class="card-body">
                 <form action="" method="GET" class="row g-3">
@@ -232,7 +232,7 @@ require_once __DIR__ . '/../../layout/sidebar.php';
                     </div>
 
                     <div class="col-md-1 d-flex align-items-end">
-                        <button type="submit" class="btn btn-sm btn-success w-100 rounded-pill">Terapkan</button>
+                        <button type="submit" class="btn btn-sm btn-theme-main w-100">Terapkan</button>
                     </div>
                 </form>
             </div>
@@ -242,15 +242,15 @@ require_once __DIR__ . '/../../layout/sidebar.php';
         <!-- Metric Cards Hasil Filter -->
         <div class="row g-3 mb-4">
             <div class="col-md-4">
-                <div class="card p-3 border-start border-4 border-info">
+                <div class="card p-3 border-start border-4 border-input-data">
                     <span class="text-muted small text-uppercase">Total Barang Masuk Periode Ini</span>
-                    <h3 class="fw-bold text-info mb-0 mt-1">+<?= number_format($total_masuk) ?> <span class="fs-6 fw-normal text-muted">Unit</span></h3>
+                    <h3 class="fw-bold text-input-data mb-0 mt-1">+<?= number_format($total_masuk) ?> <span class="fs-6 fw-normal text-muted">Unit</span></h3>
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="card p-3 border-start border-4 border-danger">
+                <div class="card p-3 border-start border-4 border-output-data">
                     <span class="text-muted small text-uppercase">Total Barang Keluar Periode Ini</span>
-                    <h3 class="fw-bold text-danger mb-0 mt-1">-<?= number_format($total_keluar) ?> <span class="fs-6 fw-normal text-muted">Unit</span></h3>
+                    <h3 class="fw-bold text-output-data mb-0 mt-1">-<?= number_format($total_keluar) ?> <span class="fs-6 fw-normal text-muted">Unit</span></h3>
                 </div>
             </div>
             <div class="col-md-4">

@@ -66,15 +66,15 @@ require_once __DIR__ . '/../../layout/sidebar.php';
 
         <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-4">
             <div>
-                <h4 class="fw-bold mb-1 text-dark"><i class="bi bi-boxes text-success me-2"></i> Master Inventori Barang</h4>
+                <h4 class="fw-bold mb-1 text-dark"><i class="bi bi-boxes text-persediaan me-2"></i> Master Data Barang</h4>
                 <p class="text-muted small mb-0">Kelola informasi barang, lokasi rak penyimpanan 1 pintu, saldo stok, dan barcode fisik.</p>
             </div>
             <div class="mt-3 mt-md-0 d-flex gap-2">
-                <a href="<?= BASE_URL ?>modules/scanner/index.php" class="btn btn-outline-success rounded-pill fw-semibold">
+                <a href="<?= BASE_URL ?>modules/scanner/index.php" class="btn btn-outline-persediaan fw-semibold">
                     <i class="bi bi-upc-scan me-1"></i> Scan Barcode
                 </a>
                 <?php if ($user_role === 'admin'): ?>
-                <a href="<?= BASE_URL ?>modules/barang/tambah.php" class="btn btn-cwe-primary rounded-pill shadow-sm">
+                <a href="<?= BASE_URL ?>modules/barang/tambah.php" class="btn btn-theme-main shadow-sm">
                     <i class="bi bi-plus-circle me-1"></i> Tambah Barang Baru
                 </a>
                 <?php endif; ?>
@@ -111,13 +111,13 @@ require_once __DIR__ . '/../../layout/sidebar.php';
                         <label class="form-label small text-muted mb-1">Filter Status Stok:</label>
                         <select name="status" class="form-select form-select-sm" onchange="this.form.submit()">
                             <option value="">-- Semua Status --</option>
-                            <option value="kritis" <?= ($filter_status === 'kritis') ? 'selected' : '' ?>>⚠️ Stok Menipis / Kritis</option>
-                            <option value="habis" <?= ($filter_status === 'habis') ? 'selected' : '' ?>>⛔ Stok Habis (0)</option>
+                            <option value="kritis" <?= ($filter_status === 'kritis') ? 'selected' : '' ?>>Stok Menipis / Kritis</option>
+                            <option value="habis" <?= ($filter_status === 'habis') ? 'selected' : '' ?>>Stok Habis (0)</option>
                         </select>
                     </div>
                     <div class="col-md-3 d-flex align-items-end gap-2 mt-3 mt-md-0 pt-md-3">
-                        <button type="submit" class="btn btn-sm btn-success rounded-pill px-3">Terapkan</button>
-                        <a href="<?= BASE_URL ?>modules/barang/index.php" class="btn btn-sm btn-light border rounded-pill px-3">Reset</a>
+                        <button type="submit" class="btn btn-sm btn-theme-main px-3">Terapkan</button>
+                        <a href="<?= BASE_URL ?>modules/barang/index.php" class="btn btn-sm btn-light border px-3">Reset</a>
                     </div>
                 </form>
             </div>
@@ -156,42 +156,42 @@ require_once __DIR__ . '/../../layout/sidebar.php';
                                         <span class="badge bg-secondary-subtle text-secondary"><?= htmlspecialchars($b['nama_kategori']) ?></span>
                                     </td>
                                     <td>
-                                        <span class="badge bg-primary-subtle text-primary border border-primary-subtle font-monospace">
-                                            <i class="bi bi-grid-3x3-gap me-1"></i> <?= htmlspecialchars($b['kode_rak']) ?>
+                                        <span class="badge bg-persediaan-subtle text-persediaan border font-monospace">
+                                            <i class="bi bi-grid-3x3-gap me-1 text-persediaan"></i> <?= htmlspecialchars($b['kode_rak']) ?>
                                         </span>
                                         <div class="text-muted" style="font-size: 0.72rem;"><?= htmlspecialchars($b['nama_rak']) ?></div>
                                     </td>
                                     <td class="text-center">
-                                        <span class="fs-6 fw-bold text-dark"><?= number_format($b['stok']) ?></span>
+                                        <span class="fs-6 fw-bold text-persediaan"><?= number_format($b['stok']) ?></span>
                                         <span class="text-muted small"><?= htmlspecialchars($b['nama_satuan']) ?></span>
                                         <div class="text-muted" style="font-size: 0.7rem;">Min: <?= $b['stok_minimum'] ?></div>
                                     </td>
                                     <td class="text-center">
                                         <?php if ($b['stok'] == 0): ?>
-                                            <span class="badge bg-danger rounded-pill px-2 py-1"><i class="bi bi-x-circle me-1"></i> Habis</span>
+                                            <span class="badge bg-output-data px-2 py-1"><i class="bi bi-x-circle me-1"></i> Habis</span>
                                         <?php elseif ($b['stok'] <= $b['stok_minimum']): ?>
-                                            <span class="badge bg-warning text-dark rounded-pill px-2 py-1"><i class="bi bi-exclamation-triangle me-1"></i> Menipis</span>
+                                            <span class="badge bg-warning text-dark px-2 py-1"><i class="bi bi-exclamation-triangle me-1"></i> Menipis</span>
                                         <?php else: ?>
-                                            <span class="badge bg-success-subtle text-success border border-success-subtle rounded-pill px-2 py-1"><i class="bi bi-check2 me-1"></i> Aman</span>
+                                            <span class="badge bg-input-data-subtle text-input-data px-2 py-1"><i class="bi bi-check2 me-1"></i> Aman</span>
                                         <?php endif; ?>
                                     </td>
                                     <td class="text-end text-nowrap">
                                         <div class="d-inline-flex gap-1 justify-content-end">
-                                            <!-- Tombol Kartu Stok -->
-                                            <a href="<?= BASE_URL ?>modules/barang/kartu_stok.php?id=<?= $b['id'] ?>" class="btn btn-sm btn-outline-info rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 28px; height: 28px; padding: 0;" title="Riwayat Kartu Stok">
+                                            <!-- Tombol Kartu Stok (Persediaan: #184AC4) -->
+                                            <a href="<?= BASE_URL ?>modules/barang/kartu_stok.php?id=<?= $b['id'] ?>" class="btn btn-sm btn-outline-persediaan d-inline-flex align-items-center justify-content-center" style="width: 28px; height: 28px; padding: 0;" title="Riwayat Kartu Stok">
                                                 <i class="bi bi-journal-text" style="font-size: 0.78rem;"></i>
                                             </a>
-                                            <!-- Tombol Cetak Label Barcode -->
-                                            <a href="<?= BASE_URL ?>modules/barang/cetak_barcode.php?id=<?= $b['id'] ?>" target="_blank" class="btn btn-sm btn-outline-secondary rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 28px; height: 28px; padding: 0;" title="Cetak Label Barcode">
+                                            <!-- Tombol Cetak Label Barcode (Output Data: #C7260A) -->
+                                            <a href="<?= BASE_URL ?>modules/barang/cetak_barcode.php?id=<?= $b['id'] ?>" target="_blank" class="btn btn-sm btn-outline-output-data d-inline-flex align-items-center justify-content-center" style="width: 28px; height: 28px; padding: 0;" title="Cetak Label Barcode">
                                                 <i class="bi bi-printer" style="font-size: 0.78rem;"></i>
                                             </a>
                                             <?php if ($user_role === 'admin'): ?>
-                                            <!-- Edit -->
-                                            <a href="<?= BASE_URL ?>modules/barang/edit.php?id=<?= $b['id'] ?>" class="btn btn-sm btn-outline-warning rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 28px; height: 28px; padding: 0;" title="Ubah Data">
+                                            <!-- Edit Data -->
+                                            <a href="<?= BASE_URL ?>modules/barang/edit.php?id=<?= $b['id'] ?>" class="btn btn-sm btn-outline-secondary d-inline-flex align-items-center justify-content-center" style="width: 28px; height: 28px; padding: 0;" title="Ubah Data">
                                                 <i class="bi bi-pencil" style="font-size: 0.78rem;"></i>
                                             </a>
-                                            <!-- Hapus -->
-                                            <a href="<?= BASE_URL ?>modules/barang/hapus.php?id=<?= $b['id'] ?>" class="btn btn-sm btn-outline-danger rounded-circle btn-delete-confirm d-inline-flex align-items-center justify-content-center" style="width: 28px; height: 28px; padding: 0;" data-name="Barang <?= htmlspecialchars($b['nama_barang']) ?>" title="Hapus Barang">
+                                            <!-- Hapus Data (Output Data: #C7260A) -->
+                                            <a href="<?= BASE_URL ?>modules/barang/hapus.php?id=<?= $b['id'] ?>" class="btn btn-sm btn-outline-output-data btn-delete-confirm d-inline-flex align-items-center justify-content-center" style="width: 28px; height: 28px; padding: 0;" data-name="Barang <?= htmlspecialchars($b['nama_barang']) ?>" title="Hapus Barang">
                                                 <i class="bi bi-trash" style="font-size: 0.78rem;"></i>
                                             </a>
                                             <?php endif; ?>
